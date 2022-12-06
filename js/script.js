@@ -1,8 +1,7 @@
 const play = document.querySelector('button');
 
-play.addEventListener('click', () => {
+play.addEventListener('click', (event) => {
   const mode = document.querySelector('select').value;
-
   switch(mode){
     case 'easy':
         createGrid(100);
@@ -18,12 +17,18 @@ play.addEventListener('click', () => {
 
 function createGrid(N){
   const grid = document.querySelector('.grid');
-  
+
   if(grid)
       grid.innerHTML = null;
 
   for(let i = 1; i <= N; ++i){
-    let e = createGridElement(i);
+    grid.append(createGridElement(i,N));
+  }
+}
+
+function createGridElement(i, N){
+    const e = document.createElement('div');
+    e.innerHTML = i;
 
     if(N == 100)
           e.className = 'square easy-square';
@@ -32,12 +37,10 @@ function createGrid(N){
     else
           e.className =  'square hard-square';
 
-    grid.append(e);
-  }
-}
-
-function createGridElement(i){
-    const e = document.createElement('div');
-    e.innerHTML = i;
+    e.addEventListener("click", () =>{
+      e.classList.add("active");
+      console.log(e.innerText);
+    })
+    
     return e;
 }
