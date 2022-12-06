@@ -21,9 +21,9 @@ function createGrid(N){
   if(grid)
       grid.innerHTML = null;
 
-  for(let i = 1; i <= N; ++i){
+  for(let i = 1; i <= N; ++i)
     grid.append(createGridElement(i,N));
-  }
+  
 }
 
 function createGridElement(i, N){
@@ -31,11 +31,11 @@ function createGridElement(i, N){
     e.innerText = i;
 
     e.className = 'square';
-    e.style.height = e.style.width = `calc(100%/${Math.sqrt(N)})`
+    e.style.height = e.style.width = `calc(100%/${Math.sqrt(N)})`;
 
-    e.addEventListener("click", () =>{
-      e.classList.add("active");
-      console.log(e.innerText);
+    e.addEventListener('click', function(){
+      this.classList.add("active");
+      console.log(this.innerText);
     })
     
     return e;
