@@ -28,14 +28,10 @@ function createGrid(N){
 
 function createGridElement(i, N){
     const e = document.createElement('div');
-    e.innerHTML = i;
+    e.innerText = i;
 
-    if(N == 100)
-          e.className = 'square easy-square';
-    else if(N == 81)
-          e.className = 'square medium-square';
-    else
-          e.className =  'square hard-square';
+    e.className = 'square';
+    e.style.height = e.style.width = `calc(100%/${Math.sqrt(N)})`
 
     e.addEventListener("click", () =>{
       e.classList.add("active");
