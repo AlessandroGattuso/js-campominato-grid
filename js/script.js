@@ -1,6 +1,6 @@
 const play = document.querySelector('button');
 
-play.addEventListener('click', (event) => {
+play.addEventListener('click', () => {
   const mode = document.querySelector('select').value;
   switch(mode){
     case 'easy':
